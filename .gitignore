@@ -1,0 +1,6 @@
+*.pyc
+*.log
+index.sh
+test.py
+/dir_csv
+
