@@ -3,6 +3,7 @@
 
 import time
 import Const
+import os
 
 def print_obj(obj):
     print '\n'.join(['%s:%s' % item for item in obj.__dict__.items()])
@@ -31,7 +32,10 @@ def szc_log(ss, level = 2):
         level_str = Const.LOG_WARNING_STR
     else:
         level_str = Const.LOG_ERROR_STR
-    f_name = './logs/log_' + level_str + '_' + get_format_time(f = '%Y%m%d%H') + '.log'
+    logs_dir = './logs/'
+    if not os.path.exists(logs_dir):
+    	os.mkdir(logs_dir)
+    f_name = logs_dir + 'log_' + level_str + '_' + get_format_time(f = '%Y%m%d%H') + '.log'
     f = open(f_name,'a')
     f.write(ss)
     f.write('\n')
